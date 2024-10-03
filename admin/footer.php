@@ -87,6 +87,16 @@ $(document).ready(function() {
         "scrollY": true,
     });
 
+    var table = $('#dataKepalaKeluarga').DataTable({
+        responsive: true,
+        "lengthMenu": [
+            [10, 50, 100, 150, 200, -1],
+            [10, 50, 100, 150, 200, "All"]
+        ],
+        "scrollX": true,
+        "scrollY": true,
+    });
+
     $('#filter-periode').on('change', function() {
         var filterValue = $(this).val();
 

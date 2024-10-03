@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usulkan'])) {
         }
         
     }
-    echo $count;
+    // echo $count;
     if($count == 0){
         $_SESSION['error'] = 'Terjadi kesalahan saat pengajuan data!';
     }else{
@@ -188,6 +188,8 @@ if(isset($_POST['edit'])){
                 'C8' => $C8,
                 'C9' => $C9
             ];
+
+            
             $Alternatif->editDataAlternatif($dataAlternatif,$dataKecAltKrit);
         } else {
             return $_SESSION['error'] = 'Tidak ada data yang dikirim!';
@@ -222,6 +224,7 @@ if(isset($_POST['edit'])){
             'C8' => $C8,
             'C9' => $C9
         ];
+        
         $Alternatif->editDataAlternatif($dataAlternatif,$dataKecAltKrit);
     }
 }
@@ -602,76 +605,130 @@ Swal.fire({
                     </div>
                     <div class="card-body">
                         <div class="">
+                            <label for="no_kk" class="form-label">No KK <small class="text-danger">*</small></label>
+                            <input type="text" class="form-control" value="<?=$alternatif['no_kk'];?>" name="no_kk"
+                                id="no_kk" required placeholder="No KK" />
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
                             <label for="c1" class="form-label">Jenis dinding <small
                                     class="text-danger">*</small></label>
-                            <select class="form-control" name="c1" required aria-label="Default select example">
+                            <select class="form-control" name="C1" required aria-label="Default select example">
                                 <option value="">-- Pilih Jenis dinding --</option>
                                 <?php foreach ($dataSubC1 as $key => $c1):?>
-                                <option <?=$c1 == $alternatif['C1'] ? 'selected':'';?> value="<?=$c1;?>">
-                                    <?=$c1;?></option>
+                                <option <?=$c1['id_sub_kriteria'] == $alternatif['id_sub_C1'] ? 'selected':'';?>
+                                    value="<?=$c1['id_sub_kriteria'];?>">
+                                    <?=$c1['nama_sub_kriteria'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="">
-                            <label for="merek" class="form-label">Merek <small class="text-danger">*</small></label>
-                            <input type="text" class="form-control" value="<?=$alternatif['merek'];?>" name="merek"
-                                id="merek" required placeholder="Merek" />
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="">
-                            <label for="harga" class="form-label">Harga <small class="text-danger">*</small></label>
-                            <select class="form-control" name="harga" required aria-label="Default select example">
-                                <option value="">-- Pilih Harga --</option>
-                                <?php foreach ($dataSubHarga as $key => $harga):?>
-                                <option <?=$harga['id_sub_kriteria'] == $alternatif['id_sub_C1'] ? 'selected':'';?>
-                                    value="<?=$harga['id_sub_kriteria'];?>">
-                                    <?=$harga['nama_sub_kriteria'];?></option>
-                                <?php endforeach;?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="">
-                            <label for="kualitas" class="form-label">Kualitas <small
+                            <label for="c2" class="form-label">Kondisi Dinding <small
                                     class="text-danger">*</small></label>
-                            <select class="form-control" name="kualitas" required aria-label="Default select example">
-                                <option value="">-- Pilih Kualitas --</option>
-                                <?php foreach ($dataSubKualitas as $key => $kualitas):?>
-                                <option <?=$kualitas['id_sub_kriteria'] == $alternatif['id_sub_C2'] ? 'selected':'';?>
-                                    value="<?=$kualitas['id_sub_kriteria'];?>">
-                                    <?=$kualitas['nama_sub_kriteria'];?></option>
+                            <select class="form-control" name="C2" required aria-label="Default select example">
+                                <option value="">-- Pilih Kondisi Dinding --</option>
+                                <?php foreach ($dataSubC2 as $key => $c2):?>
+                                <option <?=$c2['id_sub_kriteria'] == $alternatif['id_sub_C2'] ? 'selected':'';?>
+                                    value="<?=$c2['id_sub_kriteria'];?>">
+                                    <?=$c2['nama_sub_kriteria'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="">
-                            <label for="volume" class="form-label">Volume <small class="text-danger">*</small></label>
-                            <select class="form-control" name="volume" required aria-label="Default select example">
-                                <option value="">-- Pilih Volume --</option>
-                                <?php foreach ($dataSubVolume as $key => $volume):?>
-                                <option <?=$volume['id_sub_kriteria'] == $alternatif['id_sub_C3'] ? 'selected':'';?>
-                                    value="<?=$volume['id_sub_kriteria'];?>">
-                                    <?=$volume['nama_sub_kriteria'];?></option>
+                            <label for="c3" class="form-label">Jenis Atap <small class="text-danger">*</small></label>
+                            <select class="form-control" name="C3" required aria-label="Default select example">
+                                <option value="">-- Pilih Jenis Atap --</option>
+                                <?php foreach ($dataSubC3 as $key => $c3):?>
+                                <option <?=$c3['id_sub_kriteria'] == $alternatif['id_sub_C3'] ? 'selected':'';?>
+                                    value="<?=$c3['id_sub_kriteria'];?>">
+                                    <?=$c3['nama_sub_kriteria'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="">
-                            <label for="kelengkapan" class="form-label">Kelengkapan <small
+                            <label for="c4" class="form-label">Kondisi atap <small class="text-danger">*</small></label>
+                            <select class="form-control" name="C4" required aria-label="Default select example">
+                                <option value="">-- Pilih kondisi atap --</option>
+                                <?php foreach ($dataSubC4 as $key => $c4):?>
+                                <option <?=$c4['id_sub_kriteria'] == $alternatif['id_sub_C4'] ? 'selected':'';?>
+                                    value="<?=$c4['id_sub_kriteria'];?>">
+                                    <?=$c4['nama_sub_kriteria'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <label for="c5" class="form-label">Jenis Lantai <small class="text-danger">*</small></label>
+                            <select class="form-control" name="C5" required aria-label="Default select example">
+                                <option value="">-- Pilih Jenis Lantai --</option>
+                                <?php foreach ($dataSubC5 as $key => $c5):?>
+                                <option <?=$c5['id_sub_kriteria'] == $alternatif['id_sub_C5'] ? 'selected':'';?>
+                                    value="<?=$c5['id_sub_kriteria'];?>">
+                                    <?=$c5['nama_sub_kriteria'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <label for="c6" class="form-label">Kondisi lantai <small
                                     class="text-danger">*</small></label>
-                            <select class="form-control" name="kelengkapan" required
-                                aria-label="Default select example">
-                                <option value="">-- Pilih Kelengkapan --</option>
-                                <?php foreach ($dataSubKelengkapan as $key => $kelengkapan):?>
-                                <option
-                                    <?= $kelengkapan['id_sub_kriteria'] == $alternatif['id_sub_C4'] ? 'selected':'';?>
-                                    value="<?=$kelengkapan['id_sub_kriteria'];?>">
-                                    <?=$kelengkapan['nama_sub_kriteria'];?></option>
+                            <select class="form-control" name="C6" required aria-label="Default select example">
+                                <option value="">-- Pilih kondisi lantai --</option>
+                                <?php foreach ($dataSubC6 as $key => $c6):?>
+                                <option <?=$c6['id_sub_kriteria'] == $alternatif['id_sub_C6'] ? 'selected':'';?>
+                                    value="<?=$c6['id_sub_kriteria'];?>">
+                                    <?=$c6['nama_sub_kriteria'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <label for="c7" class="form-label">Kamar Mandi/Toilet <small
+                                    class="text-danger">*</small></label>
+                            <select class="form-control" name="C7" required aria-label="Default select example">
+                                <option value="">-- Pilih Kamar Mandi/Toilet --</option>
+                                <?php foreach ($dataSubC7 as $key => $c7):?>
+                                <option <?=$c7['id_sub_kriteria'] == $alternatif['id_sub_C7'] ? 'selected':'';?>
+                                    value="<?=$c7['id_sub_kriteria'];?>">
+                                    <?=$c7['nama_sub_kriteria'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <label for="c8" class="form-label">Pendapatan Keluarga <small
+                                    class="text-danger">*</small></label>
+                            <select class="form-control" name="C8" required aria-label="Default select example">
+                                <option value="">-- Pilih Pendapatan Keluarga --</option>
+                                <?php foreach ($dataSubC8 as $key => $c8):?>
+                                <option <?=$c8['id_sub_kriteria'] == $alternatif['id_sub_C8'] ? 'selected':'';?>
+                                    value="<?=$c8['id_sub_kriteria'];?>">
+                                    <?=$c8['nama_sub_kriteria'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <label for="c9" class="form-label">Jumlah Tanggungan <small
+                                    class="text-danger">*</small></label>
+                            <select class="form-control" name="C9" required aria-label="Default select example">
+                                <option value="">-- Pilih Jumlah Tanggungan --</option>
+                                <?php foreach ($dataSubC9 as $key => $c9):?>
+                                <option <?=$c9['id_sub_kriteria'] == $alternatif['id_sub_C9'] ? 'selected':'';?>
+                                    value="<?=$c9['id_sub_kriteria'];?>">
+                                    <?=$c9['nama_sub_kriteria'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>

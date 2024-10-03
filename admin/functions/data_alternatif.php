@@ -202,10 +202,10 @@
             $id_alternatif = $dataAlternatif['id_alternatif'];
             $nama_alternatif = $dataAlternatif['nama_alternatif'];
             $gambar = $dataAlternatif['gambar'];
-            $design = $dataAlternatif['design'];
-            $merek = $dataAlternatif['merek'];
+            $no_kk = $dataAlternatif['no_kk'];
+            
             $updateAlternatif = $this->db->query(
-                "UPDATE alternatif SET nama_alternatif = '$nama_alternatif',gambar='$gambar',design='$design',merek='$merek' WHERE id_alternatif = $id_alternatif"
+                "UPDATE alternatif SET nama_alternatif = '$nama_alternatif',gambar='$gambar',no_kk='$no_kk' WHERE id_alternatif = $id_alternatif"
             );
 
             if ($updateAlternatif) {
