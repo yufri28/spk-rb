@@ -117,11 +117,8 @@ $(document).ready(function() {
         "scrollY": true,
     });
 
-
     $('#filter-periode').on('change', function() {
         var filterValue = $(this).val();
-
-        console.log(filterValue);
 
         if (filterValue) {
             // Filter berdasarkan kolom "Jenis Barang"

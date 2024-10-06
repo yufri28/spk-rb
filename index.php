@@ -1,6 +1,20 @@
 <?php
 require_once 'config.php';
+$sql = "SELECT * FROM admin WHERE level='admin'";
+$res = $koneksi->query($sql);
+if($res->num_rows < 1){
+    $password_hash = password_hash("admin",PASSWORD_BCRYPT);
+    $sql2 = "INSERT INTO admin (id_admin,username,password,level) VALUES (null,'admin','$password_hash','admin')";
+    $result2 = $koneksi->query($sql2);
+}
 
+$sqlkepala = "SELECT * FROM admin WHERE level='kepala'";
+$reskepala = $koneksi->query($sqlkepala);
+if($reskepala->num_rows < 1){
+    $password_hash = password_hash("kepala",PASSWORD_BCRYPT);
+    $sqlkepala2 = "INSERT INTO admin (id_admin,username,password,level) VALUES (null,'kepala','$password_hash','kepala')";
+    $resultkepala2 = $koneksi->query($sqlkepala2);
+}
 // Mengambil URL yang dikirimkan melalui aturan rewriting
 $url = isset($_GET['url']) ? $_GET['url'] : '';
 

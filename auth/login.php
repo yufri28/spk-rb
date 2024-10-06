@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fetch = mysqli_fetch_assoc($result);
         $password_hash = password_verify($password, $fetch['password']);
        
-        if ($password_hash && $fetch['level'] == 1) {
+        if ($password_hash && $fetch['level'] == "kepala") {
                 $_SESSION['login'] = true;
                 $_SESSION['username'] = $username;
                 $_SESSION['level'] = $fetch['level']; 
                 $_SESSION['id_admin'] = $fetch['id_admin']; 
                 // Jika level nya admin, redirect ke halaman index.php
-                header("Location: ../user/index.php");
+                header("Location: ../kepala/index.php");
                 exit();
         }
         else if ($password_hash && $fetch['level'] == "admin") {
