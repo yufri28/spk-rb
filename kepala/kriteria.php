@@ -96,7 +96,7 @@ Swal.fire({
                                         <th>Kode</th>
                                         <th>Nama</th>
                                         <th>Bobot</th>
-                                        <th>Aksi</th>
+                                        <!-- <th>Aksi</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -106,14 +106,14 @@ Swal.fire({
                                         <th scope="row"><?=$kriteria['id_kriteria'];?></th>
                                         <td><?=$kriteria['nama_kriteria'];?></td>
                                         <td><?=$kriteria['bobot_kriteria'];?></td>
-                                        <td>
-                                            <button data-toggle="modal"
+                                        <!-- <td> -->
+                                        <!-- <button data-toggle="modal"
                                                 data-target="#edit<?=$kriteria['id_kriteria'];?>" type="button"
-                                                class="btn btn-sm btn-primary">Edit</button>
-                                            <!-- <button data-toggle="modal"
+                                                class="btn btn-sm btn-primary">Edit</button> -->
+                                        <!-- <button data-toggle="modal"
                                                 data-target="#hapus<?=$kriteria['id_kriteria'];?>" type="button"
                                                 class="btn btn-sm btn-danger">Hapus</button> -->
-                                        </td>
+                                        <!-- </td> -->
                                     </tr>
                                     <?php endforeach;?>
                                 </tbody>
