@@ -275,13 +275,21 @@ Swal.fire({
     <!-- Area Chart -->
     <!-- Button trigger modal -->
     <div class="col-lg-12">
-        <?php if ($numRowsHasilAkhir < 1): ?>
-        <?php if($periodeAktif != null):?>
+        <?php 
+        // if ($numRowsHasilAkhir < 1): 
+        ?>
+        <?php 
+        // if($periodeAktif != null):
+            ?>
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
             + Tambah data
         </button>
-        <?php endif; ?>
-        <?php endif; ?>
+        <?php 
+    // endif; 
+    ?>
+        <?php 
+    // endif; 
+    ?>
         <div class="card">
             <!-- <div class="card-header">
                 Featured
@@ -373,7 +381,7 @@ Swal.fire({
                                     <?php foreach ($dataAlternatif as $key => $data_alternatif):?>
                                     <tr>
                                         <td><?=(++$i);?></td>
-                                        <td><?=$data_alternatif['nama_alternatif']??'-??'-'';?></td>
+                                        <td><?=$data_alternatif['nama_alternatif']??'-';?></td>
                                         <td><a href="../images/<?=$data_alternatif['gambar'];?>" data-lightbox="image-1"
                                                 data-title="<?=$data_alternatif['nama_alternatif'];?>">
                                                 <img style="width: 50px; height: 50px;"

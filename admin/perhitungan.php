@@ -56,7 +56,7 @@ $dataPerhitungan = $getDataHasil->perhitungan($id_periode);
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="d-flex">
-                            <h6 class="m-0 font-weight-bold text-primary">Matriks Ternormalisasi</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Transformasi Data</h6>
                         </div>
                     </div>
                     <div class="card-body">
