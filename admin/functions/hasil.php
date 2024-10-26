@@ -873,6 +873,17 @@
             return $data;
         }
 
+        public function getHasilAkhirByNamaPeriode($nama_periode=null)
+        {
+            $data = $this->db->query(
+                    "SELECT * FROM hasil_akhir ha 
+                    JOIN alternatif a ON a.id_alternatif=ha.f_id_alternatif
+                    JOIN periode p ON p.id_periode=ha.f_id_periode
+                    WHERE p.nama_periode='$nama_periode'");
+
+            return $data;
+        }
+
         public function perhitungan($id_periode)
         {
             return $this->db->query(

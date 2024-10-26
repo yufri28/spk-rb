@@ -65,6 +65,16 @@
 <!-- Page level custom scripts -->
 <script src="../assets/js/demo/datatables-demo.js"></script>
 <!-- jquery datatables -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.1.2/js/dataTables.buttons.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.html5.min.js"></script>
+
 <script>
 $(document).ready(function() {
     var tables = $('#table').DataTable({
@@ -117,6 +127,40 @@ $(document).ready(function() {
         "scrollY": true,
     });
 
+    var dataHasil = $('#dataHasil').DataTable({
+        responsive: true,
+        "lengthMenu": [
+            [10, 50, 100, 150, 200, -1],
+            [10, 50, 100, 150, 200, "All"]
+        ],
+        "scrollX": true,
+        "scrollY": true,
+        layout: {
+            topStart: {
+                buttons: ['excelHtml5', 'pdfHtml5']
+            }
+        }
+    });
+
+
+    $('#filter-periode-hasil').on('change', function() {
+        var filterValue = $(this).val();
+        var defaultTitle = "SPK Penentuan Penerima Rumah Bantuan";
+
+        if (filterValue) {
+            // Tambahkan periode pada title
+            document.title = defaultTitle + " - Periode " + filterValue;
+            // Filter berdasarkan kolom "Jenis Barang"
+            dataHasil.column(4).search(filterValue).draw(); // Kolom ke-4 adalah "Jenis Barang"
+        } else {
+            // Jika tidak ada filter yang dipilih, tampilkan title default dan semua data
+            document.title = defaultTitle;
+            dataHasil.column(4).search('').draw();
+        }
+    });
+
+
+
     $('#filter-periode').on('change', function() {
         var filterValue = $(this).val();
 
@@ -130,6 +174,7 @@ $(document).ready(function() {
     });
 });
 </script>
+
 </body>
 
 </html>

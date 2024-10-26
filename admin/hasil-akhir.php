@@ -16,26 +16,36 @@ $dataHasilAkhir = $getDataHasil->getHasilAkhir();
         <div class="card">
             <div class="card-body">
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <div class="d-flex">
-                            <h6 class="m-0 font-weight-bold text-primary">Hasil Akhir</h6>
-                            <div class="d-flex col-lg-3 ml-lg-auto mr-lg-2 mb-3 mb-lg-0">
-                                <label for="filter-periode" class="d-flex mr-2 align-items-center text-nowrap"> Periode
-                                    :
-                                </label>
-                                <select id="filter-periode" class="form-control">
-                                    <option value="">Choose...</option>
-                                    <?php foreach ($dataPeriode as $key => $periode):?>
-                                    <option value="<?=$periode['nama_periode'];?>"><?=$periode['nama_periode'];?>
-                                    </option>
-                                    <?php endforeach;?>
-                                </select>
+                    <form action="../eksport/cetak_hasil.php" target="_blank" method="post">
+                        <div class="card-header py-3">
+                            <div class="d-lg-flex">
+                                <h6 class="m-0 font-weight-bold text-primary">Hasil Akhir</h6>
+                                <div class="d-flex col-lg-3 ml-lg-auto mr-lg-2 mb-3 mb-lg-0">
+                                    <label for="filter-periode-hasil"
+                                        class="d-flex mr-2 align-items-center text-nowrap">
+                                        Periode
+                                        :
+                                    </label>
+                                    <select id="filter-periode-hasil" name="filter-periode-hasil" class="form-control">
+                                        <option value="">Choose...</option>
+                                        <?php foreach ($dataPeriode as $key => $periode):?>
+                                        <option value="<?=$periode['nama_periode'];?>"><?=$periode['nama_periode'];?>
+                                        </option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <input type="hidden" name="from" value="admin">
+                                    <button type="submit" name="cetak-with-img" class="btn btn-primary">
+                                        <i class="fa fa-print"></i> PDF With IMG
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered nowrap" id="dataAlternatif" style="width:100%"
+                            <table class="table table-bordered nowrap" id="dataHasil" style="width:100%"
                                 cellspacing="0">
                                 <thead>
                                     <tr>
