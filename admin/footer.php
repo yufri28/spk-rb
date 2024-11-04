@@ -95,6 +95,7 @@ $(document).ready(function() {
         ],
         "scrollX": true,
         "scrollY": true,
+
     });
 
     var table = $('#dataKepalaKeluarga').DataTable({
