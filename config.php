@@ -53,4 +53,9 @@ function getPeriodeAktif(){
     $fecth = mysqli_fetch_assoc($getData);
     return $fecth;
 }
+
+function getFinishPeriode($id_periode = null){
+    $db = connectDatabase();
+    return $db->query("SELECT DISTINCT ha.f_id_periode FROM `periode` p JOIN hasil_akhir ha ON ha.f_id_periode=p.id_periode WHERE p.id_periode!=-1 AND ha.f_id_periode='$id_periode'")->num_rows;
+}
 ?>

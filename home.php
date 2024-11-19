@@ -55,12 +55,20 @@ require_once './config.php';
                             Sistem pendukung keputusan menggunakan metode <i style="color:#116A7B">Multi-Attribute
                                 Utility Theory</i>
                         </h5>
-                        <p class="fw-bolder" style="color: hsl(217, 10%, 50.8%)">Saat ini Program Bantuan Stimulan
-                            Perumahan Swadaya (BSPS)
-                            <?= getPeriodeAktif() ? "periode <strong>".getPeriodeAktif()['nama_periode']."</strong> telah dibuka. Bapak/Ibu bisa cek hasil
-                            pengumumannya dengan masukkan No KK pada kolom di bawah ini!":'belum dibuka.';?>
+                        <p class="fw-bolder" style="color: hsl(217, 10%, 50.8%)">
+                            <?php if(getPeriodeAktif() && getFinishPeriode(getPeriodeAktif()['id_periode']) > 0){
+                                echo "Penetapan penerima rumah bantuan Program Bantuan Stimulan
+                            Perumahan Swadaya (BSPS) periode <strong>".getPeriodeAktif()['nama_periode']."</strong> telah dilakukan. Bapak/Ibu bisa cek hasil pengumumannya dengan masukkan No KK pada kolom di bawah ini!";
+                            }elseif(getPeriodeAktif() && getFinishPeriode(getPeriodeAktif()['id_periode']) < 1){
+                                echo "Saat ini Program Bantuan Stimulan
+                            Perumahan Swadaya (BSPS) periode <strong>".getPeriodeAktif()['nama_periode']."</strong> dalam proses penetapan penerima rumah bantuan.";
+                            }else{
+                                echo 'Saat ini Program Bantuan Stimulan
+                            Perumahan Swadaya (BSPS) belum dibuka.';
+                            }
+                            ?>
                         </p>
-                        <?php if(getPeriodeAktif()):?>
+                        <?php if(getPeriodeAktif() && getFinishPeriode(getPeriodeAktif()['id_periode']) > 0):?>
                         <form action="./pengumuman.php" method="get">
                             <div class="d-flex">
                                 <input type="text" placeholder="Masukkan No KK" class="form-control py-2 px-4 me-2"

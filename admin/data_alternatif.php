@@ -339,7 +339,7 @@ Swal.fire({
                                 <input type="hidden" name="periode"
                                     value="<?= htmlspecialchars(getPeriodeAktif()['id_periode']) ?>">
                                 <?php endforeach; ?>
-                                <button type="submit" name="usulkan" class="btn btn-primary mb-2">Ujukan</button>
+                                <button type="submit" name="usulkan" class="btn btn-primary mb-2">Ajukan</button>
                                 <?php endif; ?>
                                 <?php endif; ?>
                             </form>
@@ -430,6 +430,9 @@ Swal.fire({
             </div>
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="modal-body">
+                    <div class="card-body my-n4">
+                        <strong>Periode Aktif: <?= $periodeAktif['nama_periode'] ??'Tidak ada';?></strong>
+                    </div>
                     <div class="card-body">
                         <small class="text-danger">(*) Wajib</small>
                         <div class="">
@@ -450,7 +453,7 @@ Swal.fire({
                     <div class="card-body">
                         <div class="">
                             <label for="no_kk" class="form-label">No KK <small class="text-danger">*</small></label>
-                            <input type="text" class="form-control" name="no_kk" id="no_kk" required
+                            <input type="number" class="form-control" name="no_kk" id="no_kk" required
                                 placeholder="No KK" />
                         </div>
                     </div>
@@ -592,6 +595,9 @@ Swal.fire({
                 </div>
                 <input type="hidden" name="id_alternatif" value="<?=$alternatif['id_alternatif'];?>">
                 <div class="modal-body">
+                    <div class="card-body my-n4">
+                        <strong>Periode Aktif: <?= $periodeAktif['nama_periode'] ??'Tidak ada';?></strong>
+                    </div>
                     <div class="card-body">
                         <small class="text-danger">(*) Wajib</small>
                         <div class="">
@@ -614,7 +620,7 @@ Swal.fire({
                     <div class="card-body">
                         <div class="">
                             <label for="no_kk" class="form-label">No KK <small class="text-danger">*</small></label>
-                            <input type="text" class="form-control" value="<?=$alternatif['no_kk'];?>" name="no_kk"
+                            <input type="number" class="form-control" value="<?=$alternatif['no_kk'];?>" name="no_kk"
                                 id="no_kk" required placeholder="No KK" />
                         </div>
                     </div>

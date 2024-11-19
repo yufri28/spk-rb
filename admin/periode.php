@@ -100,6 +100,7 @@ Swal.fire({
                                         <th>Deskripsi</th>
                                         <th>Kouta</th>
                                         <th>Status</th>
+                                        <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -108,9 +109,13 @@ Swal.fire({
                                     <tr>
                                         <th scope="row"><?=$key+1;?></th>
                                         <td><?=$periode['nama_periode'];?></td>
-                                        <td><?=$periode['deskripsi'];?></td>
+                                        <td><?=$periode['deskripsi'];?>
+                                        </td>
                                         <td><?=$periode['kuota'];?></td>
-                                        <td><?=$periode['status'];?></td>
+                                        <td><?=($periode['status'] == 'aktif') && ($Periode->getFinishPeriode($periode['id_periode']) < 1)?$periode['status']:'nonaktif';?>
+                                        </td>
+                                        <td><?=($Periode->getFinishPeriode($periode['id_periode']) > 0)?'Selesai':'Belum';?>
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                 data-target="#edit<?= $periode['id_periode'];?>">
@@ -219,7 +224,7 @@ Swal.fire({
                             placeholder="Kuota" aria-label="default input example">
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" <?= $Periode->getFinishPeriode($periode['id_periode']) > 0 ?'hidden':'';?>>
                         <label for="status" class="form-label">Status <small class="text-danger">*</small></label>
                         <select name="status" class="form-control" id="status">
                             <option value="">-- Pilih --</option>

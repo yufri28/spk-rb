@@ -14,6 +14,10 @@
             return $this->db->query("SELECT * FROM `periode` WHERE id_periode!=-1");
         }
 
+        public function getFinishPeriode($id_periode = null){
+            return $this->db->query("SELECT DISTINCT ha.f_id_periode FROM `periode` p JOIN hasil_akhir ha ON ha.f_id_periode=p.id_periode WHERE p.id_periode!=-1 AND ha.f_id_periode='$id_periode'")->num_rows;
+        }
+
         public function tambahPeriode($dataPeriode)
         {
             // Cek apakah nama periode sudah ada

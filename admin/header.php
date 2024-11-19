@@ -68,6 +68,11 @@ else if($_SESSION['level'] != "admin"){
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <li class="nav-item <?= $_SESSION['menu'] == 'periode' ? 'active':'';?>">
+                <a class="nav-link" href="./periode.php">
+                    <i class="fas fa-table"></i>
+                    <span>Periode</span></a>
+            </li>
             <!-- Nav Item - Charts -->
             <li class="nav-item <?= $_SESSION['menu'] == 'alternatif' ? 'active':'';?>">
                 <a class="nav-link" href="./data_alternatif.php">
@@ -87,11 +92,7 @@ else if($_SESSION['level'] != "admin"){
                     <i class="fas fa-fw fa-table"></i>
                     <span>Sub Kriteria</span></a>
             </li>
-            <li class="nav-item <?= $_SESSION['menu'] == 'periode' ? 'active':'';?>">
-                <a class="nav-link" href="./periode.php">
-                    <i class="fas fa-table"></i>
-                    <span>Periode</span></a>
-            </li>
+
             <li class="nav-item <?= $_SESSION['menu'] == 'hasil-per' ? 'active':'';?>">
                 <a class="nav-link" href="./hasil-perengkingan.php">
                     <i class="fas fa-table"></i>
